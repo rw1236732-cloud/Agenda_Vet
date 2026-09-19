@@ -1,4 +1,4 @@
-const CHAVE_AGENDAMENTO = 'agendavet_agendamento'
+const CHAVE_AGENDAMENTOS = 'agendavet_agendamento'
 
 function lerLista(chave) {
   const bruto = localStorage.getItem(chave);
@@ -6,7 +6,7 @@ function lerLista(chave) {
 }
 
 function salvarLista(chave, lista) {
-  localStorage.setItem(chave, JSON,stringify(lista));
+  localStorage.setItem(chave, JSON.stringify(lista));
 }
 
 function listarAgendamentos() {
