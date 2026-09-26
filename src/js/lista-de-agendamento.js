@@ -1,35 +1,93 @@
-document.addEventListener('DOMContentLoaded', function() {
-  garantirDadosIniciais();
+document.addEventListener('DOMContentLoaded', function () {
+    if (typeof garantirDadosIniciais === 'function') {
+        garantirDadosIniciais();
+    }
 
-  const inputData = document.getElementById('filtro-data');
-  const hoje = new Date().toISOString().slice(0, 10);
-  inputData.value = hoje;
+    const inputData = document.getElementById('filtro-data');
+    const hoje = new Date().toISOString().slice(0, 10);
+    if (inputData) {
+        inputData.value = hoje;
+        inputData.addEventListener('change', function () {
+            renderizarTabelaAgenda(inputData.value);
+        });
+    }
 
-  renderizarAgenda(hoje);
-
-  inputData.addEventListener('change', function() {
-    renderizarAgenda(inputData.value);
-  });
+    renderizarTabelaAgenda(hoje);
 });
 
-function renderizarAgenda(dataEscolhida) {
-  const container = document.getElementById('lista-agenda');
-  const todosAgendamentos = listarAgendamentos();
+function renderizarTabelaAgenda(dataEscolhida) {
+    const corpoTabela = document.getElementById('corpo-tabela-agenda');
+    if (!corpoTabela) return;
 
-  const agendamentosDoDia = todosAgendamentos
-  .filter(function(agendamento) {
-    return agendamento.data === dataEscolhida;
-  })
-  .sort(function(a, b) {
-    return a.hora.localeCompare(b.hora);
-  });
+    const todosAgendamentos = typeof listarAgendamentos === 'function' ? listarAgendamentos() : [];
 
-  if (agendamentosDoDia.length === 0) {
-    container.innerHTML = '<p>Nenhum agendamento para este dia.</p>';
-    return;
-  }
+    const opcoesStatus = [
+        "Agendado",
+        "Confirmado",
+        "Aguardando na recepção",
+        "Em atendimento",
+        "Finalizado",
+        "Cancelado"
+    ];
 
-  container.innerHTML = agendamentosDoDia.map(function(agendamento) {
-    return '<p>' + agendamento.hora + ' — ' + agendamento.petNome + ' — ' + agendamento.servicoNome + ' (' + agendamento.status + ')</p>';
-  }).join('');
+    const agendamentosDoDia = todosAgendamentos
+        .filter(function (agendamento) {
+            return agendamento.data === dataEscolhida;
+        })
+        .sort(function (a, b) {
+            return (a.hora || '').localeCompare(b.hora || '');
+        });
+
+    corpoTabela.innerHTML = '';
+
+    if (agendamentosDoDia.length === 0) {
+        corpoTabela.innerHTML = `<tr><td colspan="6" style="text-align:center;">Nenhum agendamento para este dia.</td></tr>`;
+        return;
+    }
+
+    agendamentosDoDia.forEach(function (agendamento) {
+        const tr = document.createElement('tr');
+        const statusAtual = agendamento.status || "Agendado";
+
+        const selectOptions = opcoesStatus.map(function (status) {
+            return `<option value="${status}" ${statusAtual === status ? 'selected' : ''}>${status}</option>`;
+        }).join('');
+
+        tr.innerHTML = `
+            <td>${agendamento.tutorNome || agendamento.tutor || 'N/A'}</td>
+            <td>${agendamento.petNome || agendamento.pet || 'N/A'}</td>
+            <td>${agendamento.servicoNome || agendamento.servico || 'N/A'}</td>
+            <td>${agendamento.data || 'N/A'}</td>
+            <td>${agendamento.hora || 'N/A'}</td>
+            <td>
+                <select class="select-status" data-id="${agendamento.id}">
+                    ${selectOptions}
+                </select>
+            </td>
+        `;
+
+        corpoTabela.appendChild(tr);
+    });
+
+    document.querySelectorAll('.select-status').forEach(function (select) {
+        select.addEventListener('change', function () {
+            const idAgendamento = this.getAttribute('data-id');
+            const novoStatus = this.value;
+            atualizarStatusAgendamento(idAgendamento, novoStatus);
+        });
+    });
+}
+
+function atualizarStatusAgendamento(id, novoStatus) {
+    let agendamentos = typeof listarAgendamentos === 'function' ? listarAgendamentos() : [];
+    const index = agendamentos.findIndex(a => a.id == id);
+
+    if (index !== -1) {
+        agendamentos[index].status = novoStatus;
+        if (typeof salvarAgendamentos === 'function') {
+            salvarAgendamentos(agendamentos);
+        } else {
+            localStorage.setItem('agendamentos', JSON.stringify(agendamentos));
+        }
+    }
 }

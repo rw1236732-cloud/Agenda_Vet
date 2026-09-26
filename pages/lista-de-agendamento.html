@@ -11,21 +11,39 @@
    <header class="site-header">
     <img src="../img/logo.png" alt="PetAgenda" class="logo" width="180" height="180">
     <nav>
-      <a href="pages/lista-de-agendamento.html">Agenda</a>
-      <a href="pages/cadastro-tutor.html">Cadastrar tutor</a>
-      <a href="pages/cadastro-pet.html">Cadastrar pet</a>
+      <a href="lista-de-agendamento.html">Agenda</a>
+      <a href="cadastro-tutor.html">Cadastrar tutor</a>
+      <a href="cadastro-pet.html">Cadastrar pet</a>
     </nav>
   </header>
-
+   
+  <main class="container">
   <h1>Agenda do dia</h1> <br>
 
   <label for="filtro-data">Ver agenda de</label>
   <input type="date" id="filtro-data">
 
+  <table border="1" id="tabela-agendamentos" style="margin-top: 20px; width: 100%;">
+            <thead>
+                <tr>
+                    <th>Tutor</th>
+                    <th>Pet</th>
+                    <th>Serviço</th>
+                    <th>Data</th>
+                    <th>Hora</th>
+                    <th>Status</th>
+                    </tr>
+            </thead>
+            <tbody id="corpo-tabela-agenda">
+
+              </tbody>
+        </table>
+    </main>
+
   <div id="lista-agenda"></div>
 
   <script src="../src/js/storage.js"></script>
-<script src="../src/js/dashboard.js"></script>
+<script src="../src/js/lista-de-agendamento.js"></script>
 
 </body>
 </html>
