@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cancelar Agendamento - Agenda Vet</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="card">
+  <div class="header">
+    <h1>Cancelar Agendamento</h1>
+    <p>Confira os dados antes de confirmar o cancelamento</p>
+  </div>
+
+  <div class="body" id="bodyView">
+    <div class="summary">
+      <div class="summary-row">
+        <span class="label">Tutor</span>
+        <span class="value" id="sumTutor">Maria Souza</span>
+      </div>
+      <div class="summary-row">
+        <span class="label">Pet</span>
+        <span class="value" id="sumPet">Bidu</span>
+      </div>
+      <div class="summary-row">
+        <span class="label">Serviço</span>
+        <span class="value" id="sumServico">Consulta</span>
+      </div>
+      <div class="summary-row">
+        <span class="label">Data / Hora</span>
+        <span class="value" id="sumData">28/09/2026 - 14:30</span>
+      </div>
+    </div>
+
+    <div class="warning">
+      <span>Essa ação não pode ser desfeita. O horário será liberado para outros agendamentos.</span>
+    </div>
+
+    <div class="actions">
+      <button class="btn-back" onclick="voltar()">Voltar</button>
+      <button class="btn-cancel" onclick="confirmarCancelamento()">Cancelar Agendamento</button>
+    </div>
+  </div>
+
+  <div class="success-view" id="successView">
+    <div class="check-circle">
+        <path d="M20 6L9 17l-5-5" stroke="#2f9e6f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <h2>Agendamento cancelado com sucesso.</h2>
+    <p>O tutor será notificado sobre o cancelamento.</p>
+    <button class="btn-ok" onclick="fecharTela()">OK</button>
+  </div>
+</div>
+</body>
+</html>
