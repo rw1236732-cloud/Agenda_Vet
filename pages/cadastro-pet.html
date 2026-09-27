@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro do Pet - Agenda Vet</title>
+    <!-- Podes adicionar aqui o link para o teu CSS se já tiverem -->
+</head>
+<body>
+    <main class="container">
+        <h1>Cadastro do Seu Pet</h1>
+        
+        <form id="form-cadastro-pet">
+            <div class="form-group">
+                <label for="nome-pet">Nome do Pet</label>
+                <input type="text" id="nome-pet" name="nomePet" placeholder="Ex: Rex" required>
+            </div>
+
+            <div class="form-group">
+                <label for="especie-pet">Espécie</label>
+                <select id="especie-pet" name="especie" required>
+                    <option value="">Selecione a espécie</option>
+                    <option value="cao">Cão</option>
+                    <option value="gato">Gato</option>
+                    <option value="outro">Outro</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="raca-pet">Raça</label>
+                <input type="text" id="raca-pet" name="raca" placeholder="Ex: Golden Retriever, SRD...">
+            </div>
+
+            <div class="form-group">
+                <label for="sexo-pet">Sexo do Animal</label>
+                <select id="sexo-pet" name="sexo" required>
+                    <option value="">Selecione o sexo</option>
+                    <option value="macho">Macho</option>
+                    <option value="femea">Fêmea</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="pelagem-pet">Pelagem / Cor</label>
+                <select id="pelagem-pet" name="pelagem">
+                    <option value="">Selecione a pelagem</option>
+                    <option value="curta">Curta</option>
+                    <option value="longa">Longa</option>
+                    <option value="media">Média</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-submit">Salvar Pet e Continuar</button>
+        </form>
+    </main>
+
+    <!-- Script de lógica associado -->
+    <script src="../src/js/cadastro-pet.js"></script>
+</body>
+</html>

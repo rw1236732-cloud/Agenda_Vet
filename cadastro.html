@@ -1,0 +1,61 @@
+<html lang="pt-br"><head>
+    <meta charset="UTF-8">
+    <title>Agendamento Veterinário</title>
+    <script src="index.js" defer=""></script>
+</head>
+<body>
+    <h1>Escolha Aqui o Atendimento Ideal Para Seu PET</h1>
+
+    <form id="formAgendamento">
+        <div>
+            <label for="consultas">Consultas</label>
+            <br><select id="consultas" required="">
+                <option value="">Selecione</option>
+                <option value="Consulta de rotina">Consulta de rotina</option>
+                <option value="Consulta de urgência">Consulta de urgência</option>
+                <option value="Consulta de acompanhamento">Consulta de acompanhamento</option>
+                <option value="">Nenhuma das Alternativas</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="vacinas">Vacinas</label>
+            <br><select id="vacinas" required="">
+                <option value="">Selecione</option>
+                <option value="Pelagem">Pelagem</option>
+                <option value="Antirrábica">Antirrábica (Protege da Raiva)</option>
+                <option value="Gripe Canina">Gripe Canina (tosse dos canis)</option>
+                <option value="Leucemia Felina">Leucemia Felina (Para gatos que saem na rua)</option>
+                <option value="">Nenhuma das Alternativas</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="estetica">Estética e Higiene</label>
+            <br><select id="estetica" required="">
+                <option value="">Selecione</option>
+                <option value="Banho e tosa">Banho e tosa</option>
+                <option value="Banho">Banho</option>
+                <option value="Tosa">Tosa</option>
+                <option value="Corte de unhas">Corte de unhas</option>
+                <option value="">Nenhuma das Alternativas</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="exames">Exames e procedimentos</label>
+            <br><select id="exames" required="">
+                <option value="">Selecione</option>
+                <option value="Hemograma Completo">Hemograma Completo</option>
+                <option value="Urina e Fezes">Urina e Fezes (Detectam Infecções)</option>
+                <option value="Glicemia">Glicemia (Acompanhar Diabetes)</option>
+                <option value="Procedimentos Cirurgicos">Procedimentos Cirúrgicos (castração)</option>
+                <option value="">Nenhuma das Alternativas</option>
+            </select>
+        </div>
+
+        <br>
+        <button type="button" id="btnConfirmar">Confirmar Atendimento</button>
+    </form>
+
+</body></html>
