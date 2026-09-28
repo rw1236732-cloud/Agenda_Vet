@@ -1,35 +1,96 @@
-document.addEventListener('DOMContentLoaded', function() {
-  garantirDadosIniciais();
+document.addEventListener('DOMContentLoaded', function () {
+    const inputData = document.getElementById('filtro-data');
+    // Obtém a data atual no formato YYYY-MM-DD
+    const hoje = new Date().toISOString().slice(0, 10);
 
-  const inputData = document.getElementById('filtro-data');
-  const hoje = new Date().toISOString().slice(0, 10);
-  inputData.value = hoje;
+    if (inputData) {
+        // Preenche o filtro com a data de hoje ao carregar a página
+        inputData.value = hoje;
 
-  renderizarAgenda(hoje);
+        // US08: Escuta a mudança de data pelo utilizador
+        inputData.addEventListener('change', function () {
+            renderizarTabelaAgenda(inputData.value);
+        });
+    }
 
-  inputData.addEventListener('change', function() {
-    renderizarAgenda(inputData.value);
-  });
+    // Renderiza a tabela com a data inicial
+    renderizarTabelaAgenda(hoje);
 });
 
-function renderizarAgenda(dataEscolhida) {
-  const container = document.getElementById('lista-agenda');
-  const todosAgendamentos = listarAgendamentos();
+// Função para buscar agendamentos do localStorage
+function obterAgendamentos() {
+    return JSON.parse(localStorage.getItem('agendamentos')) || [];
+}
 
-  const agendamentosDoDia = todosAgendamentos
-  .filter(function(agendamento) {
-    return agendamento.data === dataEscolhida;
-  })
-  .sort(function(a, b) {
-    return a.hora.localeCompare(b.hora);
-  });
+// Renderiza a tabela filtrando pela data selecionada
+function renderizarTabelaAgenda(dataEscolhida) {
+    const corpoTabela = document.getElementById('corpo-tabela-agenda');
+    if (!corpoTabela) return;
 
-  if (agendamentosDoDia.length === 0) {
-    container.innerHTML = '<p>Nenhum agendamento para este dia.</p>';
-    return;
-  }
+    const todosAgendamentos = obterAgendamentos();
 
-  container.innerHTML = agendamentosDoDia.map(function(agendamento) {
-    return '<p>' + agendamento.hora + ' — ' + agendamento.petNome + ' — ' + agendamento.servicoNome + ' (' + agendamento.status + ')</p>';
-  }).join('');
+    // US08: Filtra mantendo apenas os agendamentos da data selecionada
+    const agendamentosDoDia = todosAgendamentos.filter(function (agendamento) {
+        return agendamento.data === dataEscolhida;
+    });
+
+    corpoTabela.innerHTML = '';
+
+    // Se não houver agendamentos para o dia
+    if (agendamentosDoDia.length === 0) {
+        corpoTabela.innerHTML = `<tr><td colspan="6" style="text-align:center;">Nenhum agendamento para este dia.</td></tr>`;
+        return;
+    }
+
+    // Opções do menu suspenso de status (US07)
+    const opcoesStatus = [
+        "Agendado", "Confirmado", "Aguardando na recepção",
+        "Em atendimento", "Finalizado", "Cancelado"
+    ];
+
+    // Constrói as linhas da tabela
+    agendamentosDoDia.forEach(function (agendamento) {
+        const tr = document.createElement('tr');
+        const statusAtual = agendamento.status || "Agendado";
+
+        const selectOptions = opcoesStatus.map(function (status) {
+            return `<option value="${status}" ${statusAtual === status ? 'selected' : ''}>${status}</option>`;
+        }).join('');
+
+        tr.innerHTML = `
+            <td>${agendamento.tutorNome || agendamento.tutor || 'N/A'}</td>
+            <td>${agendamento.petNome || agendamento.pet || 'N/A'}</td>
+            <td>${agendamento.servicoNome || agendamento.servico || 'N/A'}</td>
+            <td>${agendamento.data || 'N/A'}</td>
+            <td>${agendamento.hora || 'N/A'}</td>
+            <td>
+                <select class="select-status" data-id="${agendamento.id}">
+                    ${selectOptions}
+                </select>
+            </td>
+        `;
+
+        corpoTabela.appendChild(tr);
+    });
+
+    // US07: Adiciona os ouvintes de evento para atualizar o status no localStorage
+    document.querySelectorAll('.select-status').forEach(function (select) {
+        select.addEventListener('change', function () {
+            const idAgendamento = this.getAttribute('data-id');
+            const novoStatus = this.value;
+            atualizarStatusAgendamento(idAgendamento, novoStatus);
+        });
+    });
+}
+
+// Função auxiliar para atualizar e salvar o novo status
+function atualizarStatusAgendamento(id, novoStatus) {
+    let agendamentos = obterAgendamentos();
+    agendamentos = agendamentos.map(function (ag) {
+        if (String(ag.id) === String(id)) {
+            ag.status = novoStatus;
+        }
+        return ag;
+    });
+    localStorage.setItem('agendamentos', JSON.stringify(agendamentos));
 }

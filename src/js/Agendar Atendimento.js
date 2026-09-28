@@ -1,47 +1,41 @@
-// script.js
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('form-agendamento');
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('form-agendamento');
 
-  if (!form) return;
+    if (form) {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
 
-  form.addEventListener('submit', function (event) {
-    event.preventDefault(); // impede o recarregamento da página
+            // Captura os valores dos campos
+            const tutorNome = document.getElementById('tutor-nome').value;
+            const petNome = document.getElementById('pet-nome').value;
+            const servicoNome = document.getElementById('agendamento-servico').value;
+            const data = document.getElementById('agendamento-data').value;
+            const hora = document.getElementById('agendamento-hora').value;
 
-    const nome = document.getElementById('nome').value.trim();
-    const telefone = document.getElementById('telefone').value.trim();
-    const nomePet = document.getElementById('nome-pet').value.trim();
-    const raca = document.getElementById('raça').value;
+            // Cria o novo objeto de agendamento
+            const novoAgendamento = {
+                id: Date.now(),
+                tutorNome: tutorNome,
+                petNome: petNome,
+                servicoNome: servicoNome,
+                data: data,
+                hora: hora,
+                status: 'Agendado'
+            };
 
-    if (!nome || !telefone || !nomePet) {
-      alert('Por favor, preencha todos os campos obrigatórios.');
-      return;
+            // Procura agendamentos existentes no localStorage
+            const agendamentos = JSON.parse(localStorage.getItem('agendamentos')) || [];
+            
+            // Adiciona o novo agendamento à lista
+            agendamentos.push(novoAgendamento);
+
+            // Guarda de volta no localStorage
+            localStorage.setItem('agendamentos', JSON.stringify(agendamentos));
+
+            alert('Atendimento agendado com sucesso!');
+
+            // Redireciona para a lista de agendamentos
+            window.location.href = 'lista-de-agendamento.html';
+        });
     }
-
-    const agendamento = {
-      nomeTutor: nome,
-      telefone,
-      nomePet,
-      raca,
-      dataCriacao: new Date().toISOString()
-    };
-
-    salvarAgendamento(agendamento);
-    exibirConfirmacao(agendamento);
-    form.reset();
-  });
-
-  function salvarAgendamento(agendamento) {
-    const lista = JSON.parse(localStorage.getItem('agendamentos')) || [];
-    lista.push(agendamento);
-    localStorage.setItem('agendamentos', JSON.stringify(lista));
-  }
-
-  function exibirConfirmacao(agendamento) {
-    alert(
-      `Agendamento realizado!\n\n` +
-      `Tutor: ${agendamento.nomeTutor}\n` +
-      `Telefone: ${agendamento.telefone}\n` +
-      `Pet: ${agendamento.nomePet} (${agendamento.raca})`
-    );
-  }
 });

@@ -1,36 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Agendar Atendimento - PetAgenda</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <div class="container">
-  <form id="form-agendamento">
-    <h1>Agendar Atendimento</h1>
-    <h2>Dados do tutor</h2>
+    <header class="site-header">
+        <img src="../img/logo.png" alt="PetAgenda" class="logo" width="180" height="180">
+        <nav>
+            <a href="lista-de-agendamento.html">Agenda</a>
+            <a href="Agendar Atendimento.html">Agendar Atendimento</a>
+            <a href="cadastro-tutor.html">Cadastrar tutor</a>
+            <a href="cadastro-pet.html">Cadastrar pet</a>
+        </nav>
+    </header>
 
-    <label for="nome">Nome:</label>
-    <input type="text" id="nome" name="nome" required><br><br>
+    <main class="container">
+        <h1>Agendar Atendimento</h1>
 
-    <label for="email">Telefone:</label>
-    <input type="tel" id="email" name="email" required><br><br>
-    <h2>Dados do Pet</h2>
+        <form id="form-agendamento">
+            <h3>Dados do Tutor</h3>
+            <div>
+                <label for="tutor-nome">Nome:</label>
+                <input type="text" id="tutor-nome" required>
+            </div>
+            <div>
+                <label for="tutor-telefone">Telefone:</label>
+                <input type="tel" id="tutor-telefone">
+            </div>
 
-    <label for="nome-pet">Nome do Pet:</label>
-    <input type="text" id="nome-pet" name="nome-pet" required>
-    <br><br>
-    <label for="raça">Raça:</label>
-    <select name="tipo de raça" id="raça">
-      <option value="Cachorro">Cachorro</option>
-      <option value="Gato">Gato</option>
-    </select>
+            <h3>Dados do Pet</h3>
+            <div>
+                <label for="pet-nome">Nome do Pet:</label>
+                <input type="text" id="pet-nome" required>
+            </div>
+            <div>
+                <label for="pet-raca">Raça:</label>
+                <select id="pet-raca">
+                    <option value="Cachorro">Cachorro</option>
+                    <option value="Gato">Gato</option>
+                    <option value="Outro">Outro</option>
+                </select>
+            </div>
 
-    <div></div>
-    <br><br>
-    <input type="submit" value="Agendar Atendimento">
-  </form>
-</div>
+            <h3>Dados do Agendamento</h3>
+            <div>
+                <label for="agendamento-servico">Serviço:</label>
+                <select id="agendamento-servico" required>
+                    <option value="Consulta">Consulta</option>
+                    <option value="Banho">Banho</option>
+                    <option value="Tosa">Tosa</option>
+                    <option value="Vacinação">Vacinação</option>
+                </select>
+            </div>
+            <div>
+                <label for="agendamento-data">Data:</label>
+                <input type="date" id="agendamento-data" required>
+            </div>
+            <div>
+                <label for="agendamento-hora">Hora:</label>
+                <input type="time" id="agendamento-hora" required>
+            </div>
+
+            <br>
+            <button type="submit">Agendar Atendimento</button>
+        </form>
+    </main>
+
+    <script src="../src/js/Agendar Atendimento.js"></script>
 </body>
 </html>
