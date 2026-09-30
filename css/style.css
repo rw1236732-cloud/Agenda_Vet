@@ -1,0 +1,110 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 20px;
+}
+
+body {
+    background-color: #0A1828;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        
+}
+
+/* Objetivo é configurar a div principal e deixar o layout centralizado na página. */
+.cadastro_daniel {
+    color: #0A1828;
+    background-color: #E5EDF1;
+    border: 5px solid #E5EDF1;
+    padding: 50px;
+}
+
+form {
+    padding-top: 25px;
+}
+
+label {
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+label, input, textarea {
+    display: block;
+    width: 100%;
+}
+
+input, textarea, button {
+    padding: 5px 10px;
+}
+
+h1 {
+    font-size: 50px;
+    text-align: center;
+}
+
+/* Escondendo o input, assim usando a label como botão de enviar foto, com isso podemos utilizar o css para personalizar. */
+
+input[type="file"] {
+    display: none;
+    font-weight: bold;
+}
+
+.enviar_foto { 
+    padding: 2%;
+    background: #0A1828;
+    color: #E5EDF1;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: .5s;
+    border: 2px solid #0A1828;
+    border-radius: 5%;
+}
+
+.enviar_foto:hover {
+    color: #0A1828; 
+    background: #E5EDF1;
+}
+
+/*Limitando o tanho do campo de observação*/
+textarea {
+    resize: none;
+}
+
+/* Fazendo botão com label para enviar file. */
+
+/*Configurando os botões do formulário*/
+.botoes{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button[type="submit"], button[type="reset"] {
+    margin-right: 25px;
+    padding: 2%;
+    color: #FFFFFF;
+    background-color:#0A1828;
+    border: 2px solid #0A1828;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/*Alterando com uma subclasse a cor da propiedade focu ao selecionar o input afim de melhorar acessibilidade. */
+
+input:focus, textarea:focus, button:focus{
+    outline-color: #0A1828
+}
+
+button:focus, button:hover {
+    background-color: #E5EDF1;
+    color: #0A1828;
+    transition: .5s;
+}
