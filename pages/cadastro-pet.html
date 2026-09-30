@@ -3,66 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro do Pet - Agenda Vet</title>
-    <!-- Podes adicionar aqui o link para o teu CSS se já tiverem -->
+    <title>Cadastrar Pet - PetAgenda</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
-    <nav>
-            <a href="lista-de-agendamento.html">Agenda</a>
-            <a href="Agendar Atendimento.html">Agendar Atendimento</a>
-            <a href="cadastro-tutor.html">Cadastrar tutor</a>
-            <a href="cadastro-pet.html">Cadastrar pet</a>
-        </nav>
+    <div class="dashboard-layout">
 
-    <main class="container">
-        <h1>Cadastro do Seu Pet</h1>
+    <!-- 1. BARRA LATERAL FIXA -->
+    <aside class="sidebar">
+        <div class="logo-container">
+            <img src="../img/logo.png" alt="PetAgenda" class="logo" width="120">
+        </div>
+        <nav class="menu-lateral">
+            <a href="lista-de-agendamento.html">📅 Agenda do Dia</a>
+            <a href="Agendar Atendimento.html">➕ Novo Agendamento</a>
+            <a href="cadastro-tutor.html">👤 Cadastrar Tutor</a>
+            <a href="Cadastro-pet.html" class="ativo">🐾 Cadastrar Pet</a>
+            <a href="servicos.html" >✨ Serviços</a>
+            <a href="cancelar-agendamento.html">❌ Cancelar Agendamento</a>
+        </nav>
+    </aside>
+
+    <!-- 2. CONTEÚDO PRINCIPAL (A TUA AGENDA) -->
+    <div class="conteudo-principal">
         
-        <form id="form-cadastro-pet">
-            <div class="form-group">
-                <label for="nome-pet">Nome do Pet</label>
-                <input type="text" id="nome-pet" name="nomePet" placeholder="Ex: Rex" required>
+        <!-- A tua caixa branca da agenda entra AQUI -->
+        <main class="container">
+        <h1>Cadastrar Pet</h1>
+
+        <form id="form-cadastrar-pet">
+            <div>
+                <label for="nome-pet">Nome do Pet:</label>
+                <input type="text" id="nome-pet" placeholder="Digite o nome do seu amiguinho" required>
             </div>
 
-            <div class="form-group">
-                <label for="especie-pet">Espécie</label>
-                <select id="especie-pet" name="especie" required>
-                    <option value="">Selecione a espécie</option>
-                    <option value="cao">Cão</option>
+            <div>
+                <label for="tipo-animal">Espécie:</label>
+                <select id="tipo-animal">
+                    <option value="cachorro">Cachorro</option>
                     <option value="gato">Gato</option>
                     <option value="outro">Outro</option>
                 </select>
             </div>
 
-            <div class="form-group">
-                <label for="raca-pet">Raça</label>
-                <input type="text" id="raca-pet" name="raca" placeholder="Ex: Golden Retriever, SRD...">
+            <div>
+                <label for="raca-pet">Raça:</label>
+                <input type="text" id="raca-pet" placeholder="Qual a raça do animalzinho?">
             </div>
 
-            <div class="form-group">
-                <label for="sexo-pet">Sexo do Animal</label>
-                <select id="sexo-pet" name="sexo" required>
-                    <option value="">Selecione o sexo</option>
-                    <option value="macho">Macho</option>
-                    <option value="femea">Fêmea</option>
-                </select>
+            <div class="grupo-porte">
+                <label>Porte do animal:</label>
+                <div class="opcoes-radio">
+                    <label><input type="radio" name="porte" value="pequeno"> Pequeno (até 10kg)</label>
+                    <label><input type="radio" name="porte" value="medio"> Médio (10kg a 25kg)</label>
+                    <label><input type="radio" name="porte" value="grande"> Grande (mais de 25kg)</label>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="pelagem-pet">Pelagem / Cor</label>
-                <select id="pelagem-pet" name="pelagem">
-                    <option value="">Selecione a pelagem</option>
-                    <option value="curta">Curta</option>
-                    <option value="longa">Longa</option>
-                    <option value="media">Média</option>
-                </select>
+            <div>
+                <label for="foto-pet" class="label-foto">📷 Enviar foto do seu pet</label>
+                <input type="file" id="foto-pet" accept="image/*">
             </div>
 
-            <button type="submit" class="btn-submit">Salvar Pet e Continuar</button>
+            <div>
+                <label for="observacoes">Observações:</label>
+                <textarea id="observacoes" placeholder="Alguma informação relevante sobre o pet?"></textarea>
+            </div>
+
+            <div class="botoes">
+                <button type="submit">Enviar</button>
+                <button type="reset">Limpar</button>
+            </div>
         </form>
     </main>
 
-    <!-- Script de lógica associado -->
     <script src="../src/js/cadastro-pet.js"></script>
 </body>
 </html>

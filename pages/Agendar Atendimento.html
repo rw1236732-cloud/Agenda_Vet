@@ -7,17 +7,28 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <header class="site-header">
-        <img src="../img/logo.png" alt="PetAgenda" class="logo" width="180" height="180">
-        <nav>
-            <a href="lista-de-agendamento.html">Agenda</a>
-            <a href="Agendar Atendimento.html">Agendar Atendimento</a>
-            <a href="cadastro-tutor.html">Cadastrar tutor</a>
-            <a href="cadastro-pet.html">Cadastrar pet</a>
-        </nav>
-    </header>
+    <div class="dashboard-layout">
 
-    <main class="container">
+    <!-- 1. BARRA LATERAL FIXA -->
+    <aside class="sidebar">
+        <div class="logo-container">
+            <img src="../img/logo.png" alt="PetAgenda" class="logo" width="120">
+        </div>
+        <nav class="menu-lateral">
+            <a href="lista-de-agendamento.html" >📅 Agenda do Dia</a>
+            <a href="Agendar Atendimento.html" class="ativo">➕ Novo Agendamento</a>
+            <a href="cadastro-tutor.html">👤 Cadastrar Tutor</a>
+            <a href="Cadastro-pet.html">🐾 Cadastrar Pet</a>
+            <a href="servicos.html">✨ Serviços</a>
+            <a href="cancelar-agendamento.html">❌ Cancelar Agendamento</a>
+        </nav>
+    </aside>
+
+    <!-- 2. CONTEÚDO PRINCIPAL (A TUA AGENDA) -->
+    <div class="conteudo-principal">
+        
+        <!-- A tua caixa branca da agenda entra AQUI -->
+        <main class="container">
         <h1>Agendar Atendimento</h1>
 
         <form id="form-agendamento">

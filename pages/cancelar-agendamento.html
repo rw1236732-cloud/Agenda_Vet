@@ -1,66 +1,74 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cancelar Agendamento - Agenda Vet</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancelar Agendamento - PetAgenda</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
-    <nav>
-            <a href="lista-de-agendamento.html">Agenda</a>
-            <a href="Agendar Atendimento.html">Agendar Atendimento</a>
-            <a href="cadastro-tutor.html">Cadastrar tutor</a>
-            <a href="cadastro-pet.html">Cadastrar pet</a>
+<div class="dashboard-layout">
+
+    <!-- 1. BARRA LATERAL FIXA -->
+    <aside class="sidebar">
+        <div class="logo-container">
+            <img src="../img/logo.png" alt="PetAgenda" class="logo" width="120">
+        </div>
+        <nav class="menu-lateral">
+            <!-- Nota: Nenhuma class="ativo" aqui, pois estamos numa tela de transição -->
+            <a href="lista-de-agendamento.html">📅 Agenda do Dia</a>
+            <a href="Agendar Atendimento.html">➕ Novo Agendamento</a>
+            <a href="cadastro-tutor.html">👤 Cadastrar Tutor</a>
+            <a href="Cadastro-pet.html">🐾 Cadastrar Pet</a>
+            <a href="servicos.html">✨ Serviços</a>
+            <a href="cancelar-agendamento.html" class="ativo">❌ Cancelar Agendamento</a>
         </nav>
+    </aside>
 
+    <!-- 2. CONTEÚDO PRINCIPAL -->
+    <div class="conteudo-principal">
+        
+        <!-- O container com max-width menor para não ficar demasiado largo -->
+        <main class="container" style="max-width: 600px; margin: 0 auto;">
+            
+            <!-- ÁREA 1: CONFIRMAR CANCELAMENTO (Visível) -->
+            <div id="area-confirmacao">
+                <h1 style="color: #e74c3c;">Cancelar Agendamento</h1>
+                <p style="text-align: center; margin-bottom: 20px;">Confira os dados antes de confirmar o cancelamento.</p>
+                
+                <!-- Caixa cinza para destacar os dados -->
+                <div class="resumo-agendamento">
+                    <p><strong>Tutor:</strong> <span id="cancel-tutor">Maria Souza</span></p>
+                    <p><strong>Pet:</strong> <span id="cancel-pet">Bidu</span></p>
+                    <p><strong>Serviço:</strong> <span id="cancel-servico">Consulta</span></p>
+                    <p><strong>Data / Hora:</strong> <span id="cancel-data">28/09/2026 - 14:30</span></p>
+                </div>
+                
+                <p style="text-align: center; color: #e74c3c; font-size: 0.9rem; margin: 20px 0;">
+                    Essa ação não pode ser desfeita. O horário será liberado para outros agendamentos.
+                </p>
+                
+                <div style="display: flex; justify-content: center; gap: 15px; margin-top: 30px;">
+                    <a href="lista-de-agendamento.html" class="btn-secundario">Voltar</a>
+                    <button type="button" class="btn-perigo">Confirmar Cancelamento</button>
+                </div>
+            </div>
 
-<div class="card">
-  <div class="header">
-    <h1>Cancelar Agendamento</h1>
-    <p>Confira os dados antes de confirmar o cancelamento</p>
-  </div>
+            <!-- ÁREA 2: MENSAGEM DE SUCESSO (Escondida por padrão) -->
+            <div id="area-sucesso" style="display: none; text-align: center; padding: 40px 20px;">
+                <h1 style="color: var(--cor-primaria); margin-bottom: 15px;">✅ Cancelado com sucesso!</h1>
+                <p>O tutor foi notificado sobre o cancelamento e o horário está livre.</p>
+                <a href="lista-de-agendamento.html" class="btn-acao" style="margin-top: 30px; display: inline-block;">Voltar à Agenda</a>
+            </div>
 
-  <div class="body" id="bodyView">
-    <div class="summary">
-      <div class="summary-row">
-        <span class="label">Tutor</span>
-        <span class="value" id="sumTutor">Maria Souza</span>
-      </div>
-      <div class="summary-row">
-        <span class="label">Pet</span>
-        <span class="value" id="sumPet">Bidu</span>
-      </div>
-      <div class="summary-row">
-        <span class="label">Serviço</span>
-        <span class="value" id="sumServico">Consulta</span>
-      </div>
-      <div class="summary-row">
-        <span class="label">Data / Hora</span>
-        <span class="value" id="sumData">28/09/2026 - 14:30</span>
-      </div>
+        </main>
     </div>
 
-    <div class="warning">
-      <span>Essa ação não pode ser desfeita. O horário será liberado para outros agendamentos.</span>
-    </div>
-
-    <div class="actions">
-      <button class="btn-back" onclick="voltar()">Voltar</button>
-      <button class="btn-cancel" onclick="confirmarCancelamento()">Cancelar Agendamento</button>
-    </div>
-  </div>
-
-  <div class="success-view" id="successView">
-    <div class="check-circle">
-        <path d="M20 6L9 17l-5-5" stroke="#2f9e6f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
-    <h2>Agendamento cancelado com sucesso.</h2>
-    <p>O tutor será notificado sobre o cancelamento.</p>
-    <button class="btn-ok" onclick="fecharTela()">OK</button>
-  </div>
 </div>
+
+<!-- Ligação para o teu ficheiro JS (se já tiveres a lógica criada) -->
+<script src="../src/js/cancelar-agendamento.js"></script>
+
 </body>
 </html>

@@ -8,38 +8,57 @@
 </head>
 <body>
 
-   <header class="site-header">
-    <img src="../img/logo.png" alt="PetAgenda" class="logo" width="180" height="180">
-    <nav>
-    <a href="lista-de-agendamento.html">Agenda</a>
-    <a href="Agendar Atendimento.html">Agendar Atendimento</a>
-    <a href="cadastro-tutor.html">Cadastrar tutor</a>
-    <a href="cadastro-pet.html">Cadastrar pet</a>
-</nav>
-  </header>
+   <div class="dashboard-layout">
 
-  <h1>Agenda do dia</h1> <br>
+        <!-- 1. BARRA LATERAL -->
+        <aside class="sidebar">
+            <div class="logo-container">
+                <img src="../img/logo.png" alt="PetAgenda" class="logo" width="120">
+            </div>
+            <nav class="menu-lateral">
+                <!-- Retirámos o "Início" daqui para fazer sentido -->
+                <a href="lista-de-agendamento.html" class="ativo">📅 Agenda do Dia</a>
+                <a href="Agendar Atendimento.html">➕ Novo Agendamento</a>
+                <a href="cadastro-tutor.html">👤 Cadastrar Tutor</a>
+                <a href="Cadastro-pet.html">🐾 Cadastrar Pet</a>
+                <a href="servicos.html">✨ Serviços</a>
+                <a href="cancelar-agendamento.html">❌ Cancelar Agendamento</a>
+            </nav>
+        </aside>
 
-  <div class="filtro-container" style="margin-bottom: 20px;">
-            <label for="filtro-data">Ver agenda de: </label>
-            <input type="date" id="filtro-data">
-        </div>
+        <!-- 2. ÁREA DE CONTEÚDO PRINCIPAL -->
+        <div class="conteudo-principal">
+            
+            <!-- COLA AQUI O CONTEÚDO DA PÁGINA (ex: a tua main class="container" da Agenda) -->
+            <main class="container">
+                <h1>Agenda do dia</h1>
+    
+    <div class="filtro-container" style="margin-bottom: 20px;">
+        <label for="filtro-data">Ver agenda de:</label>
+        <input type="date" id="filtro-data">
+    </div>
 
-        <table border="1" style="width: 100%; border-collapse: collapse;">
-            <thead>
-                <tr>
-                    <th>Tutor</th>
-                    <th>Pet</th>
-                    <th>Serviço</th>
-                    <th>Data</th>
-                    <th>Hora</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody id="corpo-tabela-agenda">
-              </tbody>
-        </table>
-    </main>
+    <table>
+        <thead>
+            <tr>
+                <th>Tutor</th>
+                <th>Pet</th>
+                <th>Serviço</th>
+                <th>Data</th>
+                <th>Hora</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="corpo-tabela-agenda">
+        </tbody>
+    </table>
+
+    <div class="estado-vazio" style="display: none;">
+        <span>🐾 💤</span>
+        <p>Nenhum amiguinho agendado para hoje ainda!</p>
+        <a href="Agendar Atendimento.html" class="btn-acao">+ Agendar Novo Atendimento</a>
+    </div>
+</main>
 
     <script src="../src/js/lista-de-agendamento.js"></script>
 

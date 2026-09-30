@@ -34,15 +34,21 @@ function renderizarTabelaAgenda(dataEscolhida) {
         return agendamento.data === dataEscolhida;
     });
 
-    corpoTabela.innerHTML = '';
+    // 1. Seleciona os elementos na página
+    const tabela = document.querySelector('table');
+    const estadoVazio = document.querySelector('.estado-vazio');
 
-    // Se não houver agendamentos para o dia
+    // 2. Se não houver agendamentos para o dia
     if (agendamentosDoDia.length === 0) {
-        corpoTabela.innerHTML = `<tr><td colspan="6" style="text-align:center;">Nenhum agendamento para este dia.</td></tr>`;
-        return;
+        if (tabela) tabela.style.display = 'none';
+        if (estadoVazio) estadoVazio.style.display = 'block';
+        return; // Pára a execução da função aqui
     }
 
-    // Opções do menu suspenso de status (US07)
+    // 3. Se houver agendamentos, garante que a tabela aparece e o aviso some
+    if (tabela) tabela.style.display = 'table';
+    if (estadoVazio) estadoVazio.style.display = 'none';
+
     const opcoesStatus = [
         "Agendado", "Confirmado", "Aguardando na recepção",
         "Em atendimento", "Finalizado", "Cancelado"
