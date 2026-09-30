@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!--Fonte-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="style.css">
+    <title>Cadastro de PET</title>
+</head>
+<body> 
+<!--Devo usar a tag main?-->    
+    <div class="cadastro_daniel">
+        <h1>CADASTRANDO MEU PET</h1>
+        <form action="" method="">
+            <div>     
+                <label for="nome_pet">Nome:</label>                
+                <input type="text" name="nome_pet" placeholder="Digite o nome do seu amiguinho">      
+            </div>
+        </form>        
+        <form>
+            <div>
+                <label for="especie">Animal:</label>               
+                <input type="text" name="especie" placeholder="Digite se é gato, cachorro, etc.">          
+            </div>  
+        </form>       
+        <form>
+            <div>
+                <label for="raca">Raça:</label>               
+                <input type="text" name="raca" placeholder="Qual a raça do seu animalzinho?">                
+            </div>
+        </form>       
+        <form>
+            <div>
+                <label for="porte">Porte do animal:</label>             
+                <input type="radio" name="porte" value="pequeno">
+                <label for="pequeno">Pequeno (até 10kg)</label>               
+                <input type="radio" name="porte" value="medio"> 
+                <label for="medio">Médio (10kg a 25kg)</label>               
+                <input type="radio" name="porte" value="grande">
+                <label for="grande">Grande (mais de 25kg)</label>                
+            </div>
+        </form>    
+        <form>           
+            <div>
+                <label class="enviar_foto" for="foto_pet">Envie uma foto do seu pet</label>            
+                <input type="file" name="foto_pet" id="foto_pet" accept=".png, .jpg, .jpeg">
+            </div>
+        </form>        
+        <form>
+            <div>
+                <label for="observacoes">Observações:</label>             
+                <textarea name="observacoes" rows="4" cols="40" placeholder="Alguma informação sobre seu pet que julgue relevante?"></textarea>
+            </div>                   
+        </form>
+        <form>
+            <div class="botoes">
+            <button type="submit">Enviar</button>
+            <button type="reset">Limpar</button>
+            </div>   
+        </form>
+    </div>
+    <div>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfAtRhs7R84DX82MnlGW0F75EWQRSMOWcGLkg7N_47fQ&s=10 ">
+    </div>   
+</body>
+</html>
+
+<!-- 
+        Sugestao para itens de cadastro:
+
+        1) Nome/Apelido do Pet
+        2) Especi do animal
+        2) Raca do cachorro/gato/...
+        3) Porte do Animal [com base no peso, sugerir com opcoes]
+        4) Observacoes importantes
+        5) Foto do animal (opcional)
+ 
+-->
