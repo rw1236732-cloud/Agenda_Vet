@@ -1,27 +1,25 @@
-
-### Sistema de Marcação de Consultas para Animais
+# Sistema de Marcação de Consultas para Animais - Agenda Vet
 
 Este projeto foi desenvolvido com o objetivo de criar um sistema para marcação de consultas para animais, facilitando o agendamento e a organização dos atendimentos veterinários.
 
-
+---
 
 ### Tecnologias Utilizadas:
 
--HTML
+- HTML5
+- CSS3
+- JavaScript
 
--CSS 
-
--JavaScript
+---
 
 ### Funcionalidades
 
-Cadastro de animais.
+- Cadastro de animais.
+- Cadastro dos responsáveis pelos animais.
+- Agendamento de consultas.
+- Seleção de data e horário para atendimento.
 
-Cadastro dos responsáveis pelos animais.
-
-Agendamento de consultas.
-
-Seleção de data e horário para atendimento.
+---
 
 ### ESTRUTURA DO PROJETO 
 
@@ -50,60 +48,50 @@ Agenda_Vet/
 │
 └── README.md
 
-### DEMOSTRAÇÃO
+---
 
-Tela Incial
+### DEMONSTRAÇÃO
 
+#### Tela Inicial
 Página inicial do sistema, onde o usuário pode acessar as principais funcionalidades do Agenda Vet.
 
-![Tela Inicial](image-7.png)
+![Tela Inicial](img/image-7.png)
 
-Agendar Atendimento
+#### Agendar Atendimento
+Página responsável por visualizar os atendimentos agendados.
 
-  Página responsável por visualizar os atendimentos agendados.
+![Agendar Atendimento](img/image-5.png)
 
-![Agendar Atendimento](image-5.png)
+#### Agenda do Dia
+Página responsável por apresentar o agendamento de um novo atendimento.
 
-Agenda do Dia
+![Agenda do Dia](img/image-6.png)
 
-Página responsável por apresentar o agendamento de um novo atendimento  
-
-![Agenda do Dia](image-6.png)
-
-Cadastro de Peds
-
+#### Cadastro de Pets
 Página utilizada para cadastrar as informações do animal.
 
-![Cadastro de peds](image-1.png)
+![Cadastro de Pets](img/image-1.png)
 
+#### Cadastro de Tutor
 Página utilizada para cadastrar as informações do tutor.
 
-Cadastro de tutor
+![Cadastro de Tutor](img/image-3.png)
 
-  ![Cadastro de tutor ](image-3.png)
-  
-  Serviços
-
+#### Serviços
 Página que apresenta os serviços veterinários disponíveis.
-  ![Serviços](image.png)
 
-Cancelar Agendamento
+![Serviços](img/image.png)
 
-Página responsável pelo cancelamento de um 
-atendimento.
+#### Cancelar Agendamento
+Página responsável pelo cancelamento de um atendimento.
 
-  ![Cancelar Agendamento](image-4.png)
+![Cancelar Agendamento](img/image-4.png)
 
-  
+---
 
 ### INTEGRANTES
 
-Integrantes do Grupo
-
-João Gabriel da Costa Carneiro 
-
-Daniel Angelim Castelo Branco Carneiro
-
-Lucas Andrade Uchoa
-
-Robert Williams de Sousa Jucá
+- João Gabriel da Costa Carneiro
+- Daniel Angelim Castelo Branco Carneiro
+- Lucas Andrade Uchoa
+- Robert Williams de Sousa Jucá
