@@ -1,4 +1,4 @@
-const CHAVE_AGENDAMENTO = 'agendavet_agendamento'
+const CHAVE_AGENDAMENTOS = 'agendavet_agendamento'
 
 function lerLista(chave) {
   const bruto = localStorage.getItem(chave);
@@ -6,7 +6,7 @@ function lerLista(chave) {
 }
 
 function salvarLista(chave, lista) {
-  localStorage.setItem(chave, JSON,stringify(lista));
+  localStorage.setItem(chave, JSON.stringify(lista));
 }
 
 function listarAgendamentos() {
@@ -19,5 +19,5 @@ function garantirDadosIniciais() {
       { id: 1, petNome: 'Thor', servicoNome: 'Banho', data: hoje, hora: '14:00', status: 'Agendado' },
       { id: 2, petNome: 'Mimi', servicoNome: 'Consulta veterinária', data: hoje, hora: '16:30', status: 'Agendado' },
     ]);
-  }
+  } 
 }

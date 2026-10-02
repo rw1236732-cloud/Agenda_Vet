@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Tutor</title>
+
+
+    <style>
+        body {font-family: sans-serif; padding: 20px; }
+        .form-group {margin-bottom:  15px; }
+        label {display: block; margin-bottom: 5px; font-weight: bold; }
+        input { width: 100%; max-width: 400px; padding: 8px; box-sizing: border-box; }
+        button { padding: 10px 15px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+    </style>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+      <div class="dashboard-layout">
+
+    <!-- 1. BARRA LATERAL FIXA -->
+    <aside class="sidebar">
+        <div class="logo-container">
+            <img src="../img/logo.png" alt="PetAgenda" class="logo" width="120">
+        </div>
+        <nav class="menu-lateral">
+            <a href="lista-de-agendamento.html" >📅 Agenda do Dia</a>
+            <a href="Agendar Atendimento.html">➕ Novo Agendamento</a>
+            <a href="cadastro-tutor.html" class="ativo">👤 Cadastrar Tutor</a>
+            <a href="Cadastro-pet.html">🐾 Cadastrar Pet</a>
+            <a href="servicos.html">✨ Serviços</a>
+            <a href="cancelar-agendamento.html">❌ Cancelar Agendamento</a>
+        </nav>
+    </aside>
+
+    <!-- 2. CONTEÚDO PRINCIPAL (A TUA AGENDA) -->
+    <div class="conteudo-principal">
+        
+        <!-- A tua caixa branca da agenda entra AQUI -->
+        <main class="container">
+    <h1>Cadastro de Tutor</h1>
+
+    <form id="form-cadastrar-tutor">
+        <div>
+            <label for="nome-tutor">Nome Completo:</label>
+            <input type="text" id="nome-tutor" placeholder="Ex: Robert Williams" required>
+        </div>
+
+        <div>
+            <label for="telefone-tutor">Telefone (WhatsApp):</label>
+            <input type="tel" id="telefone-tutor" placeholder="(85) 90000-0000" required>
+        </div>
+
+        <div>
+            <label for="email-tutor">E-mail:</label>
+            <input type="email" id="email-tutor" placeholder="robert@email.com" required>
+        </div>
+
+        <div class="botoes">
+            <button type="submit">Cadastrar Tutor</button>
+        </div>
+    </form>
+</main>
+
+<script src="../src/js/cadastro-tutor.js"></script>
+    
+</body>
+</html>
